@@ -335,7 +335,7 @@ body {
 
 /* --- Footer --- */
 footer {
-    padding: 40px 0;
+    padding: 5px 0;
     text-align: center;
     border-top: 1px solid var(--border);
     margin-top: 50px;
@@ -343,7 +343,7 @@ footer {
 }
 
 .footer-socials {
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     display: flex;
     justify-content: center;
     gap: 20px;
