@@ -11,6 +11,21 @@
     --border: rgba(255, 255, 255, 0.1);
 }
 
+/* --- Custom Scrollbar --- */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary);
+}
+
 /* --- Global Styles --- */
 * {
     margin: 0;
@@ -27,7 +42,7 @@ body {
     line-height: 1.6;
 }
 
-/* --- NEW: Floating Pill Navbar --- */
+/* --- Floating Pill Navbar --- */
 .navbar-pill-container {
     position: fixed;
     top: 25px;
@@ -63,14 +78,12 @@ body {
     transition: 0.3s ease;
 }
 
-/* Active & Hover effect (Like the image) */
 .nav-links li a:hover, 
 .nav-links li a.active {
     background: #f1f5f9;
     color: #0f172a;
 }
 
-/* Specific Contact Button inside Pill */
 .nav-links li a.nav-contact {
     background: #000;
     color: #fff;
@@ -120,7 +133,7 @@ body {
 .btn.primary:hover { background: transparent; color: var(--primary); box-shadow: 0 0 20px rgba(0, 210, 255, 0.4); }
 .btn.secondary { border: 1px solid var(--border); color: #fff; }
 
-/* --- Hero Image (Perfect Circle) --- */
+/* --- Hero Image --- */
 .hero-right { flex: 0.8; display: flex; justify-content: center; }
 .image-wrapper {
     width: 320px;
@@ -145,11 +158,22 @@ body {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-15px); }
 }
+
+/* --- About Me Highlighting --- */
+.about-text span {
+    color: var(--primary);
+    font-weight: 600;
+}
+
 /* --- Education Section --- */
 .education-container {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    border-left: 2px solid var(--border);
+    margin-left: 10%;
+    padding-left: 30px;
+    position: relative;
 }
 
 .education-card {
@@ -162,9 +186,22 @@ body {
     border-radius: 24px;
     backdrop-filter: blur(10px);
     transition: 0.3s ease;
+    position: relative;
 }
 
 .education-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+
+.education-card::before {
+    content: '';
+    position: absolute;
+    left: -41px;
+    top: 40px;
+    width: 20px;
+    height: 20px;
+    background: var(--primary);
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--primary);
+}
 
 .edu-header {
     display: flex;
@@ -204,22 +241,51 @@ body {
 .section h2 { font-size: 2.5rem; margin-bottom: 50px; position: relative; display: inline-block; }
 .section h2::after { content: ''; width: 50%; height: 4px; background: var(--primary); position: absolute; bottom: -12px; left: 25%; }
 
-/* --- Skills Grid --- */
+/* --- Skills Grid (Updated Hover Effect) --- */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 25px;
+    transition: 0.8s ease-out;
 }
+
 .skill-item {
     background: var(--card-bg);
     padding: 30px 20px;
     border-radius: 20px;
     border: 1px solid var(--border);
-    transition: 0.3s;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
 }
-.skill-item i { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; display: block; }
-.skill-item:hover { transform: translateY(-10px); border-color: var(--primary); }
 
+.skill-item:hover {
+    transform: translateY(-12px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--primary);
+    box-shadow: 0 15px 30px rgba(0, 210, 255, 0.15);
+}
+
+.skill-item i {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.skill-item:hover i {
+    transform: scale(1.2) rotate(5deg);
+}
+
+.skill-item span {
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.skill-item:hover span {
+    color: #fff;
+}
 
 /* --- Project Cards --- */
 .cards {
@@ -237,11 +303,10 @@ body {
     transition: 0.4s ease;
 }
 
-.card:hover { transform: translateY(-12px); border-color: var(--primary); background: rgba(255,255,255,0.06); }
+.card:hover { transform: translateY(-12px); border-color: var(--primary); background: rgba(255, 255, 255, 0.06); }
 .card-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 25px; }
 .card h3 { font-size: 1.5rem; margin-bottom: 15px; color: #fff; }
 .project-link { color: var(--primary); text-decoration: none; margin-top: 25px; display: inline-block; font-weight: 600; font-size: 1.05rem; }
-
 
 /* --- Contact Section --- */
 .glass-section {
@@ -268,8 +333,24 @@ body {
 .social-links a { color: var(--text); font-size: 2.2rem; transition: 0.3s ease; }
 .social-links a:hover { color: var(--primary); transform: scale(1.2); }
 
+/* --- Footer --- */
+footer {
+    padding: 40px 0;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    margin-top: 50px;
+    color: #64748b;
+}
 
-footer { padding: 40px; text-align: center; border-top: 1px solid var(--border); color: #64748b; }
+.footer-socials {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer-socials a { color: #64748b; font-size: 1.4rem; transition: 0.3s; }
+.footer-socials a:hover { color: var(--primary); }
 
 /* --- Responsive Layout --- */
 @media (max-width: 992px) {
@@ -278,4 +359,5 @@ footer { padding: 40px; text-align: center; border-top: 1px solid var(--border);
     .hero-content { flex-direction: column-reverse; text-align: center; margin-top: 100px; }
     .hero-left h1 { font-size: 3rem; }
     .image-wrapper { width: 250px; height: 250px; }
+    .education-container { margin-left: 5%; }
 }
