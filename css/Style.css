@@ -100,7 +100,10 @@ body {
     display: flex;
     align-items: center;
     padding: 0 10%;
-    background: radial-gradient(circle at 80% 20%, rgba(0, 210, 255, 0.05), transparent);
+    background:
+        radial-gradient(circle at 76% 34%, rgba(58, 123, 213, 0.16), transparent 22%),
+        radial-gradient(circle at 18% 88%, rgba(0, 210, 255, 0.08), transparent 28%),
+        linear-gradient(135deg, #0b0f1a 0%, #0d1220 46%, #101626 100%);
 }
 
 .hero-content {
@@ -130,7 +133,7 @@ body {
 }
 
 .btn.primary { background: var(--primary); color: #000; border: 1px solid var(--primary); }
-.btn.primary:hover { background: transparent; color: var(--primary); box-shadow: 0 0 20px rgba(0, 210, 255, 0.4); }
+.btn.primary:hover { background: transparent; color: var(--primary); box-shadow: 0 0 20px var(--glow); }
 .btn.secondary { border: 1px solid var(--border); color: #fff; }
 
 /* --- Hero Image --- */
