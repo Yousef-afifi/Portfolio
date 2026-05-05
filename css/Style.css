@@ -43,6 +43,12 @@ body {
     line-height: 1.6;
 }
 
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+}
+
 /* --- Floating Pill Navbar --- */
 .navbar-pill-container {
     position: fixed;
@@ -51,6 +57,8 @@ body {
     display: flex;
     justify-content: center;
     z-index: 2000;
+    left: 0;
+    right: 0;
 }
 
 .navbar-pill {
@@ -695,7 +703,7 @@ footer {
 /* --- Responsive Layout --- */
 @media (max-width: 992px) {
     .navbar-pill {
-        width: calc(100% - 24px);
+        width: min(100%, calc(100vw - 24px));
         overflow-x: auto;
         overflow-y: hidden;
         padding: 8px;
@@ -849,37 +857,59 @@ footer {
     .section {
         padding: 90px 6%;
     }
+    .navbar-pill-container {
+        top: 12px;
+        padding: 0 8px;
+    }
+    .navbar-pill {
+        width: 100%;
+        max-width: 100%;
+        padding: 6px;
+        border-radius: 20px;
+    }
+    .nav-links {
+        width: max-content;
+        min-width: 100%;
+        gap: 2px;
+    }
+    .nav-links li a {
+        padding: 8px 10px;
+        font-size: 0.72rem;
+    }
     .glass-section {
         margin: 36px 5%;
     }
-    .navbar-pill-container {
-        top: 14px;
-    }
-    .navbar-pill {
-        border-radius: 22px;
-    }
-    .nav-links {
-        justify-content: flex-start;
-    }
-    .nav-links li a {
-        padding: 9px 12px;
-        font-size: 0.78rem;
-    }
     .hero {
-        padding: 115px 6% 60px;
+        min-height: auto;
+        padding: 128px 6% 56px;
+    }
+    .hero-content {
+        gap: 24px;
     }
     .hero-left h1 {
-        font-size: 2.1rem;
+        font-size: 2rem;
+        line-height: 1.12;
+        margin-bottom: 14px;
     }
     .hero-left .role {
-        font-size: 1.05rem;
+        font-size: 1rem;
+        line-height: 1.45;
+        margin-bottom: 18px;
     }
     .hero-left p {
         font-size: 0.96rem;
+        line-height: 1.75;
+    }
+    .hero-left h3 {
+        font-size: 0.96rem;
+        margin-bottom: 8px;
+    }
+    .hero-buttons {
+        margin-top: 8px;
     }
     .image-wrapper {
-        width: 210px;
-        height: 210px;
+        width: 190px;
+        height: 190px;
     }
     .education-container {
         margin-left: 0;
@@ -961,14 +991,26 @@ footer {
 }
 
 @media (max-width: 420px) {
+    .navbar-pill-container {
+        padding: 0 6px;
+    }
+    .navbar-pill {
+        width: 100%;
+        max-width: 100%;
+        padding: 5px;
+    }
+    .nav-links li a {
+        padding: 8px 8px;
+        font-size: 0.68rem;
+    }
     .section h2 {
         font-size: 1.8rem;
     }
     .hero-left h1 {
-        font-size: 1.9rem;
+        font-size: 1.82rem;
     }
     .hero-left .role {
-        font-size: 0.98rem;
+        font-size: 0.94rem;
     }
     .skills-orbits {
         grid-template-columns: 1fr;
